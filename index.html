@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css" integrity="sha512-R+xPS2VPCAFvLRy+I4PgbwkWjw1z5B5gNDYgJN5LfzV4gGNeRQyVrY7Uk59rX+c8tzz63j8DeZPLqmXvBxj8pA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/regular.min.css" integrity="sha512-EbT6icebNlvxlD4ECiLvPOVBD0uQdt4pHRg8Gpkfirdu9W8l2rtRZO8rThjqeIK08ubcFeiFKHbek7y+lEbWIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/solid.min.css" integrity="sha512-EvFBzDO3WBynQTyPJI+wLCiV0DFXzOazn6aoy/bGjuIhGCZFh8ObhV/nVgDgL0HZYC34D89REh6DOfeJEWMwgg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style media="screen">
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            letter-spacing: 1px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-transform: capitalize;
+        }
+
+        body{
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .container{
+            height: 450px;
+            width: 330px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        #input{
+            height: 45px;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            background:#666;
+            color:#fff;
+            padding: 0 10px;
+            margin: 10px 0;
+        }
+
+        #input::placeholder{
+            color: #bbb;
+        }
+
+        ul li{
+            background: #eee;
+            color: #333;
+            height: 40px;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 10px;
+            position: relative;
+        }
+
+        ul .fa-circle-check, .fa-trash{
+            position: absolute;
+            cursor: pointer;
+        }
+
+        ul .fa-circle-check{
+            right: 40px;
+            color: green;
+        }
+
+        ul .fa-trash{
+            right: 15px;
+            color: #ff0033;
+        }
+
+        ul .checked{
+            background: lightgreen;
+            text-decoration: line-through;
+            transition: .3s;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="input" placeholder="Enter new task">
+        <br>
+        <p>Tasks</p>
+        <ul></ul>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#input').change(function(){
+                var input = $(this).val();
+                $('ul').append('<li>' + input + '<i class="fa-solid fa-circle-check"></i><i class="fa-solid fa-trash"></i></li>');
+            });
+
+            $('ul').on('click','.fa-trash', function(){
+                $(this).parent('li').fadeOut(200);
+            });
+
+            $('ul').on('click','.fa-circle-check', function(){
+                $(this).parent('li').toggleClass('checked');
+            });
+
+            // clear input area
+            $('#input').val("");
+        });
+
+        //implement input clearing function
+
+        
+    </script>
+
+</body>
+</html>
